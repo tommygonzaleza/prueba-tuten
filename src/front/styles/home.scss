@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.round-card {
+    border-radius: 4%;
+}
+
+.login-card {
+    position: absolute;
+    top: 30%;
+    left: 49%;
+    transform: translate(-50%);
+    display: "inline-block";
+    z-index: 1;
+    border-radius: 4%;
+}
+
+.login-button {
+    width: 15rem;
+}
+
+@media only screen and (max-width: 800px){
+    .home{
+        background-image: 'url("https://i.ibb.co/tznCskP/login-1.jpg")';
+    }
+    .login-card {
+        position: absolute;
+        top: 20%;
+        left: 49%;
+        transform: translate(-50%);
+        display: "inline-block";
+        z-index: 1;
+        border-radius: 4%;
+    }
+}

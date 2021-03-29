@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Carousel } from "react-bootstrap";
 import PropTypes from "prop-types";
 import "../../styles/home.scss";
 
@@ -26,14 +26,49 @@ export const Home = props => {
 				sessionStorage.setItem("name", result.firstName);
 				props.setLoggedIn(true);
 			})
-			.catch(error => {
+			.catch(() => {
 				alert("Contraseña/Usuario incorrecto");
 			});
 	};
 
 	return (
-		<div className="text-center mt-5">
-			<Card className="mx-auto my-auto" style={{ width: "20rem" }}>
+		<div className="text-center home">
+			{window.matchMedia("(min-width: 800px)").matches ? (
+				<Carousel className="d-inline-block">
+					<Carousel.Item>
+						<img
+							className="d-block w-100 h-100"
+							src="https://i.ibb.co/tznCskP/login-1.jpg"
+							alt="First slide"
+						/>
+					</Carousel.Item>
+					<Carousel.Item>
+						<img
+							className="d-block w-100 h-100"
+							src="https://i.ibb.co/jTGssRt/login-2.jpg"
+							alt="Second slide"
+						/>
+					</Carousel.Item>
+					<Carousel.Item>
+						<img
+							className="d-block w-100 h-100"
+							src="https://i.ibb.co/7RYKt7M/login-3.jpg"
+							alt="Third slide"
+						/>
+					</Carousel.Item>
+					<Carousel.Item>
+						<img
+							className="d-block w-100 h-100"
+							src="https://i.ibb.co/TbhqQn7/login-4.jpg"
+							alt="Fourth slide"
+						/>
+					</Carousel.Item>
+				</Carousel>
+			) : (
+				""
+			)}
+
+			<Card className="login-card" style={{ width: "20rem" }}>
 				<Card.Body>
 					<Card.Title>LOGIN</Card.Title>
 					<Card.Subtitle className="mb-2 text-muted">Nice to see you over here again!</Card.Subtitle>
@@ -52,9 +87,12 @@ export const Home = props => {
 						<div className="w-100 text-left mt-2">
 							<label className="text-left d-inline-block mr-2">Password</label>
 							{passIcon ? (
-								<i className="fas fa-eye-slash d-inline-block" onClick={e => setPassIcon(false)} />
+								<i
+									className="fas fa-eye-slash d-inline-block pointer"
+									onClick={e => setPassIcon(false)}
+								/>
 							) : (
-								<i className="fas fa-eye d-inline-block" onClick={e => setPassIcon(true)} />
+								<i className="fas fa-eye d-inline-block pointer" onClick={e => setPassIcon(true)} />
 							)}
 						</div>
 						<input
@@ -64,9 +102,12 @@ export const Home = props => {
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 						/>
-						<Button variant="outline-dark" border="dark" className="bg-dark text-light mt-3" type="submit">
-							Login
-						</Button>
+						<img
+							src="https://i.ibb.co/RgYDd6q/boton2-06.png"
+							alt="Button"
+							className="login-button mx-auto pointer"
+							onClick={e => loginValidation(e)}
+						/>
 					</form>
 				</Card.Body>
 			</Card>

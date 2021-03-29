@@ -6,11 +6,11 @@ import PropTypes from "prop-types";
 export const MyNavbar = props => {
 	const { store } = useContext(Context);
 	return (
-		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-			<Navbar.Brand href="/" className="w-50">
+		<Navbar collapseOnSelect expand="lg" className="py-0" style={{ backgroundColor: "#7829c3" }}>
+			<Navbar.Brand href="/" className="w-50 m-0">
 				<img
-					src="https://interfell.com/wp-content/uploads/2019/02/LogoCompleto-MenuSuperior.png"
-					className="w-50"
+					src="https://i.ibb.co/gFcRPj8/LOGO2-06.png"
+					className={window.matchMedia("(min-width: 800px)").matches ? "w-50" : "w-100"}
 				/>
 			</Navbar.Brand>
 			{props.loggedIn ? (
@@ -19,17 +19,22 @@ export const MyNavbar = props => {
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="ml-auto">
 							<>
-								<Nav.Link className="text-light mx-3" disabled href="#deets">
-									Welcome back! <strong>{sessionStorage.getItem("name")}</strong>
+								<Nav.Link
+									className="text-light mx-3 align-items-bottom"
+									disabled
+									href="#deets"
+									style={{ fontSize: "18px" }}>
+									¡Welcome back! <strong>{sessionStorage.getItem("name")}</strong>
 								</Nav.Link>
 								<Nav.Link
 									href="/"
 									className="text-light mx-3"
-									onClick={e => {
+									onClick={() => {
 										props.setLoggedIn(false);
 										sessionStorage.clear();
-									}}>
-									Log out
+									}}
+									style={{ fontSize: "18px" }}>
+									<strong>Log out</strong>
 								</Nav.Link>
 							</>
 						</Nav>
